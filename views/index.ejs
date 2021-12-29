@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('./partials/header.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davidson’s Blog</title>
+</head>
+<body>
+    <%-include('./partials/homenavbar.ejs') %>
+    <div class="jumbotron container-xl rounded-0 bg-warning text-dark mt-5">
+        <div class="container">
+          <h1 class="display-4">Davidson’s Blog</h1>
+          <p class="lead">Seja Bem-Vindo(a)</p>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <h2 class="mb-3">Últimos Artigos</h2>
+        <% article.forEach(article=>{ %>
+            <div class="card border border-warning mb-4">
+                <div class="card-header bg-warning text-dark border-0">
+                    <h3><%= article.title %></h3>
+                </div>
+                <div class="card-body bg-dark border border-warning">
+                    <a href="/article/<%= article.slug %>" class="btn btn-outline-warning">Ver artigo</a>
+                </div>
+            </div><br>
+        <% }) %>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-outline-success mb-5" href="/articles/page/1">Ver todos os artigos</a>
+        </div>
+    </div>
+    <footer class="bg-warning text-dark">
+        <div class="container">
+            <div class="d-flex justify-content-start p-3">
+                <a class="btn btn-outline-dark btn-sm" href="/login">Login de Administrador</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("../../partials/header.ejs") %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários Cadastrados</title>
+</head>
+<body>
+    <%- include("../../partials/navbar.ejs") %>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h4>Usuários</h4>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a href="/admin/users/create" class="btn btn-sm btn-outline-success">Novo Usuário</a>
+            </div>
+        </div>
+        <hr>
+        <table class="table border border-warning w-100">
+            <thead class="bg-warning text-dark  border-0">
+                <tr>
+                    <th class="border-0 w-10">
+                        ID
+                    </th>
+                    <th class="border-0 w-75">
+                        E-Mail
+                    </th>
+                    <th class="border-0 w-15">
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="border-0 bg-dark text-light">
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td class="col border border-warning w-5">
+                            <%= user.id %>
+                        </td>
+                        <td class="col border border-warning w-80">
+                            <%= user.email %>
+                        </td>
+                        <td class="col border border-warning align-middle w-15">
+                            <a href="/admin/users/edit/<%= user.id %>" class="w-100 btn btn-sm btn-outline-warning mr-3">Editar</a>
+                            <form action="/users/delete" method="post" onsubmit="confirmDelete(event)">
+                                <input type="hidden" name="id" value="<%= user.id %>"/>
+                                <button type="submit" class="btn btn-sm btn-outline-danger w-100 mt-2">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    const confirmDelete = (event) => {
+        event.preventDefault()
+        confirm('Deseja realmente deletar este usuário?') ? event.target.submit() : window.location.reload()
+    }
+</script>
+</html>

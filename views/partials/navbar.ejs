@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning text-dark w-100">
+    <a class="navbar-brand" href="/">Davidson’s Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+        </li>
+        <li>
+          <a href="/admin/categories" class="nav-link">Categorias</a>
+        </li>
+        <li>
+          <a href="/admin/articles" class="nav-link">Artigos</a>
+        </li>
+        <li>
+          <a href="/admin/users" class="nav-link">Usuários</a>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-outline-danger" onclick="confirmLogout()">Sair</button>
+  </nav>
+  <script>
+    const confirmLogout = () => {
+      if(confirm("Deseja realmente sair?")){
+        window.location.href = "/users/logout";
+      }
+    }
+  </script>

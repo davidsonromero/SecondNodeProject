@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('../../partials/header.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Categoria</title>
+</head>
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+        <% if(error){ %>
+            <div class="alert alert-danger" role="alert">
+                Falha ao cadastrar categoria! Tente novamente.
+            </div>
+        <% } %>
+        <div class="card border border-0">
+            <div class="card-header bg-warning text-dark text-light border-0">
+                <h2>Nova Categoria</h2>
+            </div>
+            <div class="card-body bg-dark rounded-bottom border border-warning">
+                <form action="/categories/save" method="post">
+                    <input type="text" name="title" class="form-control" placeholder="Título da categoria"><br>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-warning">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

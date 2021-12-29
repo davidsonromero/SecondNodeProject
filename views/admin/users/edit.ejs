@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include("../../partials/header.ejs") %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+</head>
+<body>
+    <%- include("../../partials/navbar.ejs") %>
+    <div class="container mt-5">
+        <% if(error){ %>
+            <div class="alert alert-danger" role="alert">
+                Falha ao editar usuário! Tente novamente.
+            </div>
+        <% } %>
+        <% if(email){ %>
+            <div class="alert alert-danger" role="alert">
+                E-Mail já em uso! Escolha outro e-mail.
+            </div>
+        <% } %>
+        <div class="card border border-warning">
+            <div class="card-header border-warning bg-warning text-dark">
+                <h3>Editar Usuário</h3>
+            </div>
+            <div class="card-body border-warning bg-dark">
+                <form action="/users/edit" method="post">
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                    <label>Novo e-mail (deixe em branco para não mudar) | Atual: <%= user.email %></label>
+                    <input type="email" name="email" placeholder="Novo e-mail" class="form-control"><br>
+                    <label>Nova senha (deixe em branco para não mudar)</label>
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Nova senha" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                        <button class="btn btn-outline-warning" onclick="showPassword()" type="button" id="button-addon2">Ver Senha</button>
+                        </div>
+                    </div><br>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-warning">Enviar</button>
+                    </div>      
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const showPassword = () => {
+        const password = document.getElementById('password');
+        if (password.type === 'password') {
+            password.type = 'text';
+        } else {
+            password.type = 'password';
+        }
+    }
+</script>
+</html>

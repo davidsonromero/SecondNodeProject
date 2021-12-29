@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('../../partials/header.ejs') %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Artigo</title>
+</head>
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+        <% if(error){ %>
+            <div class="alert alert-danger" role="alert">
+                Falha ao editar artigo! Tente novamente.
+            </div>
+        <% } %>
+        <div class="card border border-0">
+            <div class="card-header bg-warning text-dark text-light border-0">
+                <h2>Editar Artigo</h2>
+            </div>
+            <div class="card-body bg-dark rounded-bottom border border-warning">
+                <label>Título</label>
+                <form action="/articles/update" method="post">
+                    <input type="text" name="title" value="<%= article.title %>" class="form-control" placeholder="Título"><br>
+                    <textarea id="article" name="article" rows="12"><%= article.body %></textarea><br>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-warning">Enviar</button>
+                    </div>
+                    <input type="hidden" name="id" value="<%= article.id %>">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        skin: "oxide-dark",
+        content_css: "dark",
+        selector: '#article',
+        language: 'pt_BR',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak wordcount insertdatetime media paste save table contextmenu directionality emoticons textcolor colorpicker textpattern imagetools',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+    })
+</script>
+</html>

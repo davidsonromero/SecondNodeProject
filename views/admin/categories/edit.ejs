@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('../../partials/header.ejs')%>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Categoria</title>
+</head>
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+        <% if(error){ %>
+            <div class="alert alert-danger" role="alert">
+                Não foi possível editar a categoria. Tente novamente.
+            </div>
+        <% } %>
+        <div class="card border-0">
+            <div class="card-header bg-warning text-dark  border border-warning">
+                <h3>Editar Categoria</h3>
+            </div>
+            <div class="card-body border border-warning bg-dark">
+                <form action="/categories/update" method="POST">
+                    <label for="name">Nome</label>
+                    <input type="text" name="title" id="name" class="form-control" value="<%= category.title %>">
+                    <input type="hidden" name="id" value="<%= category.id %>">
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-warning mt-2">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
