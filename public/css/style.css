@@ -1,0 +1,18 @@
+body{
+    color: whitesmoke;
+    background-color: #383e44;
+}
+hr{
+    background-color: whitesmoke;
+}
+.form-control{
+    background-color: #383e44 !important;
+    color: whitesmoke !important;
+}
+.form-control::placeholder{
+    color: rgb(136, 136, 136) !important;
+}
+.dropdown-item:hover{
+    background-color: #383e44 !important;
+    color: whitesmoke !important;
+}
